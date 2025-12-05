@@ -1,0 +1,61 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %}Home | YeNoor Jewellery{% endblock %}
+
+{% block content %}
+
+    {# --- HERO SECTION (LEFT HALF) --- #}
+    <section class="hero-section">
+        <div class="hero-text">
+            <h2>THE NEW ELEGANCE. SHOP THE COLLECTION.</h2>
+            <button class="cta-button">EXPLORE</button>
+        </div>
+        <div class="hero-image">
+            {# Placeholder for the main image (You'll replace this with an actual image link later) #}
+            <img src="{% static 'images/placeholder_hero.jpg' %}" alt="Model wearing jewelry">
+        </div>
+    </section>
+
+    {# --- CATEGORY BAR --- #}
+    <section class="shop-by-category">
+        <h3>SHOP BY CATEGORY</h3>
+        <div class="category-grid">
+            {# In a real project, you'd loop through category objects here #}
+            <div class="category-item">RING</div>
+            <div class="category-item">NECKLACE</div>
+            <div class="category-item">EARRINGS</div>
+            <div class="category-item">BRACELETS</div>
+        </div>
+    </section>
+
+    {# --- TRENDING NOW / PRODUCT CAROUSEL --- #}
+    <section class="trending-now">
+        <h3>TRENDING NOW</h3>
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card">
+                {# Placeholder for image #}
+                <div class="product-image"></div> 
+                
+                <h4>{{ product.name }}</h4> 
+                <p class="price">${{ product.price }}</p> 
+                
+                <div class="card-actions">
+                    <button class="quick-add-btn">QUICK ADD</button>
+                    <button class="detail-btn">View</button>
+                </div>
+            </div>
+            {% empty %}
+                <p>No products are currently trending. Check the admin!</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    {# --- TRUST SIGNALS BAR --- #}
+    <section class="trust-signals">
+        <div>1-YEAR WARRANTY</div>
+        <div>WATERPROOF</div>
+        <div>ETHICALLY SOURCED</div>
+    </section>
+    
+{% endblock content %}
