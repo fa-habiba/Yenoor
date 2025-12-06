@@ -11,7 +11,7 @@
             <button class="cta-button">EXPLORE</button>
         </div>
         <div class="hero-image">
-            {# Placeholder for the main image (You'll replace this with an actual image link later) #}
+            {# Placeholder for the main hero image #}
             <img src="{% static 'images/placeholder_hero.jpg' %}" alt="Model wearing jewelry">
         </div>
     </section>
@@ -20,7 +20,6 @@
     <section class="shop-by-category">
         <h3>SHOP BY CATEGORY</h3>
         <div class="category-grid">
-            {# In a real project, you'd loop through category objects here #}
             <div class="category-item">RING</div>
             <div class="category-item">NECKLACE</div>
             <div class="category-item">EARRINGS</div>
@@ -34,9 +33,27 @@
         <div class="product-grid">
             {% for product in products %}
             <div class="product-card">
-                {# Placeholder for image #}
-                <div class="product-image"></div> 
                 
+                {# --- CLICKABLE IMAGE --- #}
+                <div class="image-container">
+                    <a href="{% url 'product_detail' product.slug %}">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-img">
+                        {% else %}
+                            <div class="no-image-placeholder">No Image</div>
+                        {% endif %}
+                    </a>
+                </div>
+
+                <h4><a href="{% url 'product_detail' product.slug %}" style="text-decoration: none; color: inherit;">{{ product.name }}</a></h4> 
+                <p class="price">${{ product.price }}</p> 
+                
+                <div class="card-actions">
+                    <button class="quick-add-btn">QUICK ADD</button>
+                    <a href="{% url 'product_detail' product.slug %}" class="detail-btn" style="display:block; text-decoration:none; color:black; border:1px solid #ccc; margin-top:5px;">View</a>
+                </div>
+            </div>
+
                 <h4>{{ product.name }}</h4> 
                 <p class="price">${{ product.price }}</p> 
                 

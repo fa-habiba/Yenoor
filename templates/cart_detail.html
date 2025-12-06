@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Shopping Cart | YeNoor Jewellery{% endblock %}
+
+{% block content %}
+
+<div class="cart-container">
+    <h1>Your Shopping Bag</h1>
+
+    {% if cart|length > 0 %}
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart %}
+                <tr>
+                    <td>
+                        <div class="cart-product-info">
+                            {% if item.product.image %}
+                                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                            {% endif %}
+                            <span>{{ item.product.name }}</span>
+                        </div>
+                    </td>
+                    <td class="quantity-cell">
+                        <a href="{% url 'cart_decrement' item.product.id %}" class="qty-btn">-</a>
+                        <span class="qty-number">{{ item.quantity }}</span>
+                        <a href="{% url 'cart_increment' item.product.id %}" class="qty-btn">+</a>
+                    </td>
+                    <td>${{ item.price }}</td>
+                    <td>${{ item.total_price }}</td>
+                    <td>
+                        <a href="{% url 'cart_remove' item.product.id %}" class="remove-link">Remove</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="cart-summary">
+            <h3>Subtotal: ${{ cart.get_total_price }}</h3>
+            <div class="checkout-actions">
+                <a href="{% url 'home' %}" class="continue-shopping">Continue Shopping</a>
+                <a href="{% url 'orders:order_create' %}" class="checkout-btn" style="text-decoration:none; display:inline-block;">PROCEED TO CHECKOUT</a>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="empty-cart">
+            <p>Your cart is currently empty.</p>
+            <a href="{% url 'home' %}" class="cta-button">START SHOPPING</a>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

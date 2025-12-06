@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Thank You | YeNoor Jewellery{% endblock %}
+
+{% block content %}
+<div class="success-container" style="text-align: center; padding: 50px;">
+    <i class="fas fa-check-circle" style="font-size: 50px; color: green; margin-bottom: 20px;"></i>
+    <h1>Thank you for your order!</h1>
+    <p>Your order number is <strong>#{{ order.id }}</strong>.</p>
+    <p>We have received your request and will ship it shortly.</p>
+    <br>
+    <a href="{% url 'home' %}" class="cta-button">CONTINUE SHOPPING</a>
+</div>
+{% endblock %}

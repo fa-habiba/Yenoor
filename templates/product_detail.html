@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} | YeNoor Jewellery{% endblock %}
+
+{% block content %}
+
+<div class="product-detail-container">
+    
+    {# --- LEFT: IMAGE SECTION --- #}
+    <div class="detail-image">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+            <div class="no-image-placeholder">No Image Available</div>
+        {% endif %}
+    </div>
+
+    {# --- RIGHT: INFO SECTION --- #}
+    <div class="detail-info">
+        <h1>{{ product.name }}</h1>
+        <p class="detail-price">${{ product.price }}</p>
+
+        <div class="description">
+            <p>{{ product.description }}</p>
+        </div>
+
+        {# --- ACTIONS --- #}
+        <div class="purchase-actions">
+            <div class="purchase-actions">
+            <form action="{% url 'cart_add' product.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="add-to-cart-btn">ADD TO CART</button>
+            </form>
+        </div>
+        </div>
+
+        <div class="meta-info">
+            <p><small>Category: Jewelry</small></p>
+            <p><small>Availability: {% if product.is_available %}In Stock{% else %}Sold Out{% endif %}</small></p>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

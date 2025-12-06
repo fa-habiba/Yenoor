@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Checkout | YeNoor Jewellery{% endblock %}
+
+{% block content %}
+<div class="checkout-container">
+    <div class="checkout-title">
+        <h1>Checkout</h1>
+        <p>Please review your order and enter shipping details.</p>
+    </div>
+
+    <div class="checkout-flex">
+        {# --- LEFT: ORDER SUMMARY --- #}
+        <div class="order-summary">
+            <h3>Your Order</h3>
+            <ul>
+                {% for item in cart %}
+                <li>
+                    <span>{{ item.quantity }}x {{ item.product.name }}</span>
+                    <span>${{ item.total_price }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="total-cost">
+                <strong>Total: ${{ cart.get_total_price }}</strong>
+            </div>
+        </div>
+
+        {# --- RIGHT: SHIPPING FORM --- #}
+        <div class="order-form">
+            <h3>Shipping Details</h3>
+            <form action="." method="post">
+                {% csrf_token %}
+                <div class="form-grid">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="place-order-btn">PLACE ORDER</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

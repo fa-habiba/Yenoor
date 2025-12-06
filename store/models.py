@@ -10,6 +10,8 @@ class Product(models.Model):
     description = models.TextField(blank=True)
     # Price (base price, we will use variants for actual sale price)
     price = models.DecimalField(max_digits=6, decimal_places=2) 
+    # Main Product Image - Requires 'Pillow' library
+    image = models.ImageField(upload_to='products/', blank=True, null=True)
     # Date when the product was added (great for "New Arrivals")
     created_date = models.DateTimeField(auto_now_add=True)
     # Is the product visible on the site?
