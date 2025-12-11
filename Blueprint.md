@@ -35,3 +35,11 @@ Build a scalable, high-performance Django e-commerce platform specialized for je
 ### Phase 5: Production Readiness
 - [ ] Security Hardening (Environment Variables)
 - [ ] Deployment Configuration
+
+### Phase 6: Interactive 3D Coming Soon (Feature Branch)
+- [ ] Set up "Coming Soon" App/View
+- [ ] Integrate Three.js & GLTFLoader
+- [ ] Implement 3D Scene (Lights, Camera, Renderer)
+- [ ] Asset Pipeline (GLB Models in Static)
+- [ ] Interaction Logic (Raycaster/Click Events)
+- [ ] Modular Mini-Game Overlay System

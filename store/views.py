@@ -75,3 +75,9 @@ def cart_decrement(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart.decrement(product=product)
     return redirect('cart_detail')
+
+def coming_soon(request):
+    """
+    Renders the 3D Coming Soon page with interactive games.
+    """
+    return render(request, 'coming_soon.html')

@@ -11,6 +11,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('product/<slug:slug>/', views.product_detail, name='product_detail'),
+    path('coming-soon/', views.coming_soon, name='coming_soon'),
     
     # Cart URLs
     path('cart/', views.cart_detail, name='cart_detail'),

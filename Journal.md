@@ -74,3 +74,14 @@
 - Configured `orders/admin.py`.
 - Added `OrderItemInline` to view products within an order.
 - Verified orders are visible and manageable in the Admin Panel.
+
+## [11/12/25] - Feature Branch: 3D Coming Soon
+- Initialized "features" branch.
+- Defined architecture for Three.js integration with Django.
+- Planned modular structure for 3D object interaction and mini-games.
+
+## [11/12/2025] - Phase 6: Modular Game Engine
+- Created `static/js/games/` directory.
+- Implemented `ring_memory.js` (Memory Match Game).
+- Updated `coming_soon.html` with Dynamic Module Import logic.
+- Connected 3D Click events to the Game Loader.
